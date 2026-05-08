@@ -39,14 +39,14 @@ class Category(models.Model):
         verbose_name='Usuário'
     )
 
-
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
-    
+
     def __str__(self):
         return self.name
-    
+
+
 class Transaction(models.Model):
     account = models.ForeignKey(
         Account,
@@ -105,10 +105,6 @@ class Transaction(models.Model):
     class Meta:
         verbose_name = 'Transação'
         verbose_name_plural = 'Transações'
-    
+
     def __str__(self):
         return f'{self.get_type_display()} - {self.amount} em {self.date}'
-
-
-
-

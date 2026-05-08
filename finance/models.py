@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import UserProfile
 
+
 class Account(models.Model):
     user = models.ForeignKey(
         UserProfile,
@@ -17,22 +18,22 @@ class Account(models.Model):
     type = models.CharField(
         max_length=20,
         choices=[
-        ('CHECKING', 'Conta Corrente'),
-        ('SAVINGS', 'Conta Poupança'),
-        ('INVESTMENT', 'Investimento')],
+            ('CHECKING', 'Conta Corrente'),
+            ('SAVINGS', 'Conta Poupança'),
+            ('INVESTMENT', 'Investimento')],
         default='CHECKING',
         verbose_name='Tipo de Conta'
     )
     balance = models.DecimalField(
-        max_digits=12, 
-        decimal_places=2, 
-        default=0.00, 
+        max_digits=12,
+        decimal_places=2,
+        default=0.00,
         verbose_name='Saldo atual'
     )
     bank_name = models.CharField(
-        max_length=100, 
+        max_length=100,
         blank=True,
-        null=True, 
+        null=True,
         verbose_name='Banco'
     )
     is_active = models.BooleanField(
@@ -54,7 +55,8 @@ class Account(models.Model):
 
     def __str__(self):
         return f'{self.name} - {self.get_type_display()}'
-    
+
+
 class Card(models.Model):
     account = models.ForeignKey(
         Account,
@@ -98,8 +100,6 @@ class Card(models.Model):
     class Meta:
         verbose_name = 'Cartão'
         verbose_name_plural = 'Cartões'
-    
-    def __str__(self):  
-        return f'{self.name} - Limite: {self.credit_limit} - Utilizado: {self.used_limit}'
 
-    
+    def __str__(self):
+        return f'{self.name} - Limite: {self.credit_limit} - Utilizado: {self.used_limit}'

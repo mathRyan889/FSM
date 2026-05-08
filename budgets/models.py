@@ -2,6 +2,7 @@ from django.db import models
 from accounts.models import UserProfile
 from transactions.models import Category
 
+
 class Budget(models.Model):
     user = models.ForeignKey(
         UserProfile,
