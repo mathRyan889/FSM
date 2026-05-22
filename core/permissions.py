@@ -23,5 +23,6 @@ class IsOwnerOfObject(permissions.BasePermission):
         # Account direto
         if hasattr(obj, 'user') and hasattr(obj.user, 'user'):
             return obj.user.user == user
+        # vai checar se obj tem user (UserProfile) e se esse UserProfile tem user (Django User)
 
         return False
