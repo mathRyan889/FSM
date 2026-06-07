@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework_simplejwt',
+     'drf_spectacular',
 
     'accounts',
     'finance',
@@ -67,6 +68,13 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # Usando JWT Authentication
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',  # Usando drf-spectacular para documentação automática
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'FSM API',
+    'DESCRIPTION': 'API para Gestão Financeira Pessoal',
+    'VERSION': '1.0.0',
 }
 
 SIMPLE_JWT = {
